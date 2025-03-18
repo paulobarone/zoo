@@ -82,4 +82,8 @@ public abstract class Bird extends Animal{
       System.out.println(name + " não pode treinar, pois não é domesticado.");
     }
   }
+
+  public void sing() {
+    System.out.println(name + " está cantando!");
+  }
 }
