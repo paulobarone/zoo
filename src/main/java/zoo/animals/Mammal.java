@@ -45,4 +45,14 @@ public abstract class Mammal extends Animal {
       System.out.println(name + " não está grávida.");
     }
   }
+
+  // Getters and Setters
+
+  public boolean isPregnant() {
+    return isPregnant;
+  }
+
+  public void setPregnant(boolean pregnant) {
+    isPregnant = pregnant;
+  }
 }
