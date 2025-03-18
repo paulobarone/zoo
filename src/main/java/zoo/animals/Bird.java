@@ -47,7 +47,11 @@ public abstract class Bird extends Animal implements Oviparous, NestBuilder {
           quantityEggs += 1;
           setNumberOfEggs(quantityEggs);
 
-          System.out.println(name + " botou " + quantityEggs + " ovos!");
+          if(quantityEggs == 1) {
+            System.out.println(getName() + " botou " + quantityEggs + " ovo!");
+          } else {
+            System.out.println(name + " botou " + quantityEggs + " ovos!");
+          }
         } else {
           System.out.println(name + " já possui ovos.");
         }
@@ -68,7 +72,7 @@ public abstract class Bird extends Animal implements Oviparous, NestBuilder {
       }
 
       maxFlightSpeed += additionalSpeed;
-      System.out.println(name + " agora voa " + additionalSpeed + "km/h mais rápido!");
+      System.out.println(name + " foi treinado e agora voa " + additionalSpeed + "km/h mais rápido!");
     } else {
       System.out.println(name + " não pode treinar, pois não é domesticado.");
     }
