@@ -1,13 +1,13 @@
 package zoo.interfaces;
 
 public interface NestBuilder {
-  String getName();
-  boolean haveNest();
-  void setHaveNest(boolean haveNest);
+  public String getName();
+  public boolean hasNest();
+  public void setHasNest(boolean hasNest);
 
   public default void buildNest() {
-    if (!haveNest()) {
-      setHaveNest(true);
+    if (!hasNest()) {
+      setHasNest(true);
       System.out.println(getName() + " construiu um ninho!");
     } else {
       System.out.println(getName() + " já possui um ninho.");

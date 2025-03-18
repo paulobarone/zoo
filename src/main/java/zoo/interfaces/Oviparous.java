@@ -3,10 +3,10 @@ package zoo.interfaces;
 import java.util.Random;
 
 public interface Oviparous {
-  String getName();
-  String getGender();
-  int getNumberOfEggs();
-  void setNumberOfEggs(int numberOfEggs);
+  public String getName();
+  public String getGender();
+  public int getNumberOfEggs();
+  public void setNumberOfEggs(int numberOfEggs);
 
   public default void layEggs() {
     if (getGender().equals("F")) {

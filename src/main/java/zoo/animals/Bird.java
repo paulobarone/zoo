@@ -8,14 +8,14 @@ import java.util.Random;
 public abstract class Bird extends Animal implements Oviparous, NestBuilder {
   private boolean isDomesticated;
   private int maxFlightSpeed;
-  private boolean haveNest;
+  private boolean hasNest;
   protected int numberOfEggs;
 
   public Bird(String name, int age, String gender, int maxFlightSpeed) {
     super(name, age, gender);
     this.maxFlightSpeed = maxFlightSpeed;
     this.isDomesticated = false;
-    this.haveNest = false;
+    this.hasNest = false;
     this.numberOfEggs = 0;
   }
 
@@ -40,7 +40,7 @@ public abstract class Bird extends Animal implements Oviparous, NestBuilder {
   @Override
   public void layEggs() {
     if (gender.equals("F")) {
-      if(haveNest) {
+      if(hasNest) {
         if (numberOfEggs == 0) {
           Random random = new Random();
           int quantityEggs = random.nextInt(5);
@@ -90,12 +90,12 @@ public abstract class Bird extends Animal implements Oviparous, NestBuilder {
     return gender;
   }
 
-  public boolean haveNest() {
-    return haveNest;
+  public boolean hasNest() {
+    return hasNest;
   }
 
-  public void setHaveNest(boolean haveNest) {
-    this.haveNest = haveNest;
+  public void setHasNest(boolean hasNest) {
+    this.hasNest = hasNest;
   }
 
   public int getNumberOfEggs() {
@@ -122,7 +122,7 @@ public abstract class Bird extends Animal implements Oviparous, NestBuilder {
     this.maxFlightSpeed = maxFlightSpeed;
   }
 
-  public boolean isHaveNest() {
-    return haveNest;
+  public boolean isHasNest() {
+    return hasNest;
   }
 }
