@@ -22,9 +22,13 @@ public abstract class Mammal extends Animal {
 
   public void startGestation() {
     if(gender.equals("F")) {
-      if(this.isBaby()) {
-        isPregnant = true;
-        System.out.println(name + " iniciou uma gestação.");
+      if(!this.isBaby()) {
+        if(!isPregnant) {
+          isPregnant = true;
+          System.out.println(name + " iniciou uma gestação.");
+        } else {
+          System.out.println(name + " já está grávida.");
+        }
       } else {
         System.out.println(name + " não pode iniciar uma gestação, pois é um filhote.");
       }

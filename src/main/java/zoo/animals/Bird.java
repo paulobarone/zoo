@@ -42,10 +42,14 @@ public abstract class Bird extends Animal{
   public void layEggs() {
     if(gender.equals("F")) {
       if(haveNest) {
-        Random random = new Random();
-        int quantityEggs = random.nextInt(5);
-        eggs = quantityEggs;
-        System.out.println(name + " botou " + quantityEggs + " ovos!");
+        if(eggs == 0) {
+          Random random = new Random();
+          int quantityEggs = random.nextInt(5);
+          eggs = quantityEggs;
+          System.out.println(name + " botou " + quantityEggs + " ovos!");
+        } else {
+          System.out.println(name + " já possui ovos.");
+        }
       } else {
         System.out.println(name + " não possui um ninho.");
       }
