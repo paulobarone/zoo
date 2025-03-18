@@ -1,19 +1,22 @@
 package zoo.animals;
 
+import zoo.interfaces.NestBuilder;
+import zoo.interfaces.Oviparous;
+
 import java.util.Random;
 
-public abstract class Bird extends Animal{
+public abstract class Bird extends Animal implements Oviparous, NestBuilder {
   private boolean isDomesticated;
   private int maxFlightSpeed;
   private boolean haveNest;
-  private int eggs;
+  protected int numberOfEggs;
 
-  public Bird(String name, int age, double weight, String gender, int maxFlightSpeed) {
-    super(name, age, weight, gender);
+  public Bird(String name, int age, String gender, int maxFlightSpeed) {
+    super(name, age, gender);
     this.maxFlightSpeed = maxFlightSpeed;
     this.isDomesticated = false;
     this.haveNest = false;
-    this.eggs = 0;
+    this.numberOfEggs = 0;
   }
 
   public void tame() {
@@ -24,50 +27,35 @@ public abstract class Bird extends Animal{
   public void fly() {
     if(isDomesticated) {
       Random flightSpeed = new Random();
-      System.out.println(name + " está voando a " + flightSpeed.nextInt(maxFlightSpeed + 1) + "km/h");
+      int randomFlightSpeed = flightSpeed.nextInt(maxFlightSpeed + 1);
+      if(randomFlightSpeed < 10) {
+        randomFlightSpeed += 10;
+      }
+      System.out.println(name + " está voando a " + randomFlightSpeed + "km/h");
     } else {
       System.out.println(name + " não pode voar em liberdade, pois não está domesticado.");
     }
   }
 
-  public void buildNest() {
-    if(!haveNest) {
-      haveNest = true;
-      System.out.println(name + " construiu seu ninho.");
-    } else {
-      System.out.println(name + " já possui um ninho.");
-    }
-  }
-
+  @Override
   public void layEggs() {
-    if(gender.equals("F")) {
+    if (gender.equals("F")) {
       if(haveNest) {
-        if(eggs == 0) {
+        if (numberOfEggs == 0) {
           Random random = new Random();
           int quantityEggs = random.nextInt(5);
-          eggs = quantityEggs;
+          quantityEggs += 1;
+          setNumberOfEggs(quantityEggs);
+
           System.out.println(name + " botou " + quantityEggs + " ovos!");
         } else {
           System.out.println(name + " já possui ovos.");
         }
       } else {
-        System.out.println(name + " não possui um ninho.");
+        System.out.println(name + " não pode botar ovos, pois não tem um ninho.");
       }
     } else {
       System.out.println(name + " não pode botar ovos, pois é macho.");
-    }
-  }
-
-  public void hatchEggs() {
-    if(eggs > 0) {
-      if(eggs > 1) {
-        System.out.println("Os " + eggs + " ovos de " + name + " chocaram!");
-      } else {
-        System.out.println("O ovo de " + name + " chocou!");
-      }
-      eggs = 0;
-    } else {
-      System.out.println(name + " não possui ovos.");
     }
   }
 
@@ -75,6 +63,9 @@ public abstract class Bird extends Animal{
     if(isDomesticated) {
       Random random = new Random();
       int additionalSpeed = random.nextInt(26);
+      if(additionalSpeed == 0) {
+        additionalSpeed += 1;
+      }
 
       maxFlightSpeed += additionalSpeed;
       System.out.println(name + " agora voa " + additionalSpeed + "km/h mais rápido!");
@@ -85,5 +76,53 @@ public abstract class Bird extends Animal{
 
   public void sing() {
     System.out.println(name + " está cantando!");
+  }
+
+  // Getters and Setters
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public String getGender() {
+    return gender;
+  }
+
+  public boolean haveNest() {
+    return haveNest;
+  }
+
+  public void setHaveNest(boolean haveNest) {
+    this.haveNest = haveNest;
+  }
+
+  public int getNumberOfEggs() {
+    return numberOfEggs;
+  }
+
+  public void setNumberOfEggs(int numberOfEggs) {
+    this.numberOfEggs = numberOfEggs;
+  }
+
+  public boolean isDomesticated() {
+    return isDomesticated;
+  }
+
+  public void setDomesticated(boolean domesticated) {
+    isDomesticated = domesticated;
+  }
+
+  public int getMaxFlightSpeed() {
+    return maxFlightSpeed;
+  }
+
+  public void setMaxFlightSpeed(int maxFlightSpeed) {
+    this.maxFlightSpeed = maxFlightSpeed;
+  }
+
+  public boolean isHaveNest() {
+    return haveNest;
   }
 }

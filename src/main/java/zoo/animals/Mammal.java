@@ -3,8 +3,8 @@ package zoo.animals;
 public abstract class Mammal extends Animal {
   private boolean isPregnant;
 
-  public Mammal(String name, int age, double weight, String gender) {
-    super(name, age, weight, gender);
+  public Mammal(String name, int age, String gender) {
+    super(name, age, gender);
     this.isPregnant = false;
   }
 
